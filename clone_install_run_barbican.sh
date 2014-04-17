@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Run the correct version of python!
+pyenv shell barbican27
+
 # Work from HOME today
 cd ~
 
