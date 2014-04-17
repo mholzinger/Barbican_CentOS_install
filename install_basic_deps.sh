@@ -11,20 +11,13 @@ sudo yum install -y \
 # Clone pyenv project to $HOME/.pyenv
 git clone git://github.com/yyuu/pyenv.git ~/.pyenv
 
+# Write shell vars to bashrc  
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
-
-# Write shell vars to bashrc  
-cat << _PYENVCONF_ >> ~/.bashrc
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
-echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
-eval "$(pyenv init -)"
-_PYENVCONF_
-
-#export PATH="$HOME/.pyenv/bin:$PATH"
-
-# Restart shell for path changes take effect
-exec $SHELL
 
 # Install Python versions into $PYENV_ROOT/versions
 pyenv install 2.7.6
@@ -36,12 +29,11 @@ pyenv rehash
 
 # Clone pyenv project to $HOME/.pyenv
 git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
-exec "$SHELL"
 
 # Create 2.7.6 Virtualenv
 pyenv virtualenv 2.7.6 my-virtual-env-2.7.6
 
-### BARBICAN
+### BARBICAN VIRTUALENV CONFIG
 
 # Installs Python 2.7.5
 pyenv install 2.7.5
